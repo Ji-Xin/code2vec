@@ -141,7 +141,7 @@ def _train(model, optimizer, criterion, option, reader, builder, trial):
             train_loss = 0.0
 
             builder.refresh_train_dataset()
-            train_data_loader = DataLoader(builder.train_dataset, batch_size=option.batch_size, shuffle=True, num_workers=args.num_workers)
+            train_data_loader = DataLoader(builder.train_dataset, batch_size=option.batch_size, shuffle=False, num_workers=args.num_workers)
 
             model.train()
             for i_batch, sample_batched in enumerate(train_data_loader):

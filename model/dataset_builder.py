@@ -20,10 +20,10 @@ class DatasetBuilder(object):
         self.reader = reader
         self.option = option
 
-        test_count = int(len(reader.items) * split_ratio)
-        random.shuffle(reader.items)
-        train_items = reader.items[test_count:]
-        test_items = reader.items[0: test_count]
+        train_count = int(len(reader.items) * (1-split_ratio))
+        # random.shuffle(reader.items)
+        train_items = reader.items[0: train_count]
+        test_items = reader.items[train_count:]
         logger.info('train dataset size: {0}'.format(len(train_items)))
         logger.info('test dataset size: {0}'.format(len(test_items)))
 
@@ -55,7 +55,7 @@ class DatasetBuilder(object):
             paths = []
             ends = []
 
-            random.shuffle(item.path_contexts)
+            # random.shuffle(item.path_contexts)
             for start, path, end in item.path_contexts[:max_path_length]:
                 starts.append(start)
                 paths.append(path)

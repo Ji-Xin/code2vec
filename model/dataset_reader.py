@@ -85,10 +85,10 @@ class DatasetReader(object):
                     parse_mode = 2
                 elif line.startswith('doc:'):
                     doc = line[4:]
-                elif parse_mode == 1:
+                elif parse_mode == 1: #paths
                     path_context = line.split('\t')
                     path_contexts_append((int(path_context[0]), int(path_context[1]), int(path_context[2])))
-                elif parse_mode == 2:
+                elif parse_mode == 2: #vars
                     alias = line.split('\t')
                     code_data.aliases[alias[1]] = alias[0]
 
